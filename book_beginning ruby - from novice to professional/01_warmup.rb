@@ -95,7 +95,8 @@ puts %Q|
 "STRING".reverse: #{"STRING".reverse}
 "STRING".swapcase: #{"STRING".swapcase}
 "STRING".swapcase.swapcase: #{"STRING".swapcase.swapcase}
-
+"String".sum: #{"String".sum}
+"String".next: #{"String".next}
 |
 
 # Using Ruby in a Non Object Oriented Style

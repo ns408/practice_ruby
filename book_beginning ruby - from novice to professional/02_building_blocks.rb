@@ -113,5 +113,24 @@ puts 120.chr
 x = 10
 y = 20
 puts "\nInterpolation example:\n#{x} + #{y} = #{x + y}"
+# Another example
+puts x.to_s + " + " + y.to_s + " = " + (x + y).to_s
 
 puts "It's a #{"bad " * 2 }time."
+
+# String Methods - Captured in 01_warmup.rb
+
+# Regular expressions and string manipulation
+# Regular expression - is a string that describes pattern for matching elements in other strings.
+
+# Substitution
+puts "\n# Substitution"
+puts "using sub() to do single substitution: " + "foobar foobar".sub('bar', 'foo')
+puts "using gsub() for multiple substitutions: " + "foobar foobar".gsub('bar', 'foo')
+puts "using gsub() for multiple substitutions: " + "what was that".gsub('a', 'i')
+
+
+
+puts %Q|
+Summary:
+|
