@@ -128,7 +128,49 @@ puts "\n# Substitution"
 puts "using sub() to do single substitution: " + "foobar foobar".sub('bar', 'foo')
 puts "using gsub() for multiple substitutions: " + "foobar foobar".gsub('bar', 'foo')
 puts "using gsub() for multiple substitutions: " + "what was that".gsub('a', 'i')
+puts "replace first two chars of a string: " + "what was that".sub(/^../, 'wat')
+puts "replace first two chars of a string: " + "what was that".sub(/..$/, 'wat')
+puts %Q|
+^ anchor for the beginning of line.
+.. - represent any character
+$ anchor for the end of line.
+|
 
+puts "\A \Z can be used for absolute start or end of a string."
+puts "replace first two chars of a string: " + "what was that\nwhat what".sub(/\A../, 'wat')
+puts "replace first two chars of a string: " + "what was that\nwhat what".sub(/..\Z/, 'wat')
+
+puts %Q|
+Iteration with a Regular Expression
+Using scan as the iterator method.
+
+Below each letter is fed to the block, assigned to letter and printed.
+|
+
+"abc".scan(/./) { |letter| puts letter}
+"xyz".scan(/./) do |letter|
+    puts letter
+end
+puts "Scan test - match alphanumeric and/or underscore characters in group of 4 using \\w"
+"This is a scan test".scan(/\w\w\w\w/) { |var| puts var}
+
+puts %q|
+# Special chars and symbols for regex
+^   anchor for the beginning of a line
+$   anchor for the end of a line
+\A  anchor for the start of a string
+\Z  anchor for the end of a string
+.   any character
+\w  any letter, digit, or underscore
+\W  anything that \w doesn't match
+\d  any digit
+\D  anything that \d doesn't match (non-digits)
+\s  whitespace (space, tabs, newlines etc)
+\S  non-whitespace (any visible character)
+|
+puts
+
+"Me shoe cost me $99 and me sock $20".scan(/\d+/) { |var| puts var}
 
 
 puts %Q|
