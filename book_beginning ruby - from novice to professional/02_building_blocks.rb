@@ -168,9 +168,55 @@ $   anchor for the end of a line
 \s  whitespace (space, tabs, newlines etc)
 \S  non-whitespace (any visible character)
 |
-puts
 
+puts
 "Me shoe cost me $99 and me sock $20".scan(/\d+/) { |var| puts var}
+
+puts %Q|
+# Regular expression character and sub-expression modifiers
+*   match *zero* or more occurances of the preceding char, and match as many as possible.
++   match *one* or more occurances of the preceding char, and match as many as possible.
+
+*?  match "zero" or more occurances of the preceding char, and match as few as possible.
++?  match "one" or more occurances of the preceding char, and match as few as possible.
+
+?   match either one or none of the preceding character.
+
+{x}     match x occurances of the preceeding character.
+{x, y}  match at least x occurances and at most y occurances.
+|
+
+puts """\nExample of *character classes*
+/[aeiou]/   - match any of a,e,i,o,u
+/[a-m]/     - match all lowercase chars between a and m
+"""
+
+"This is a test".scan(/[aeiou]/) { |x| print x + "\t" }
+puts
+"This is a test".scan(/[a-m]/) { |x| print x + "\t" }
+
+puts """\n
+### Matching - a string against a pattern of choice
+=~  matching operator.
+"""
+
+# If the string has a match with the regex following the operator
+# then the expression returns the position of the first match.
+puts "String has vowels." if "This is a test" =~ /[aeiou]/
+puts "String contains no digits." unless "This is a test" =~ /[0-9]/
+
+puts "\nUsing method match() provided by String class."
+puts "String has vowels - using .match()" if "This is a test".match(/[aeiou]/)
+
+x = "This is a test".match(/(\w+) (\w+)/)
+p x
+
+puts """
+Above, match returns a MatchData object that can be accessed like an array.
+x[0]    contains the data matched by the entire regular expression
+        each successive element contains the value which was matched by each group of the regex.
+        (\w+) matched This and then is
+"""
 
 
 puts %Q|
